@@ -12,3 +12,6 @@ Open `index.html` in je browser.
 2. Kies **Add new site → Import an existing project → GitHub** en selecteer deze repository.
 3. Laat build command leeg en zet publish directory op `.` (staat ook in `netlify.toml`).
 4. Klik op **Deploy**. Elke push naar `main` gaat daarna automatisch live.
+
+## Pagina's
+`index.html` (home), `over-mij.html`, `werk.html`, `ervaring.html`, `villarreal.html` en `contact.html`. Gedeelde stijl staat in `styles.css`, interactie (menu, tellers, scroll-animaties, filter) in `script.js`. Lettertypes worden zelf gehost in `assets/fonts`.
