@@ -281,3 +281,17 @@ h2 em{font-style:normal;background:linear-gradient(transparent 58%,var(--sun) 58
 .ig-grid blockquote.instagram-media{background:var(--card);color:var(--fg);padding:24px;min-height:120px;display:grid;place-items:center;font-weight:600}
 .ig-grid blockquote.instagram-media a{color:inherit}
 .case-link{justify-self:start;margin-top:6px;font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px}
+
+/* Foto's in cases */
+.case .poster.has-img{background:var(--ink)}
+.case .poster.has-img::before{display:none}
+.case .poster.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,61,0) 40%,rgba(20,33,61,.85) 100%)}
+.case .poster.has-img img{transition:transform .8s var(--ease)}
+.case:hover .poster.has-img img{transform:scale(1.05)}
+.case .poster.has-img b{z-index:1;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.case .poster.contain{background:#FCEBE5}
+.case .poster.contain::after{display:none}
+.case .poster.contain img{object-fit:contain;padding:12%}
+.side-photo{margin:12px 0 0;display:grid;gap:8px}
+.side-photo img{width:100%;height:auto;border-radius:4px;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--sun-deep)}
+.side-photo figcaption{color:var(--muted)}
