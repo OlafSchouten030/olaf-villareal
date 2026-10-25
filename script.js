@@ -25,13 +25,13 @@
   function countUp(el) {
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-suffix') || '';
-    if (reduce || isNaN(target)) { el.textContent = target + suffix; return; }
+    if (reduce || isNaN(target)) { el.textContent = target.toLocaleString('nl-NL') + suffix; return; }
     var start = null, dur = 1200;
     function step(t) {
       if (!start) start = t;
       var p = Math.min(1, (t - start) / dur);
       var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
+      el.textContent = Math.round(target * eased).toLocaleString('nl-NL') + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -67,6 +67,18 @@
       document.querySelectorAll('.case').forEach(function (c) {
         c.hidden = !(f === 'alles' || (c.getAttribute('data-tags') || '').indexOf(f) > -1);
       });
+    });
+  });
+
+  // Video pas laden na klik (privacyvriendelijk via youtube-nocookie)
+  document.querySelectorAll('.video-btn[data-yt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.title = 'Vlog van Olaf Schouten';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture';
+      f.allowFullscreen = true;
+      b.replaceWith(f);
     });
   });
 
