@@ -82,6 +82,23 @@
     });
   });
 
+  // Instagram-embeds pas laden als de sectie in beeld komt
+  var ig = document.querySelector('[data-ig]');
+  if (ig) {
+    var loadIg = function () {
+      if (window.instgrm) { window.instgrm.Embeds.process(); return; }
+      var sc = document.createElement('script');
+      sc.async = true; sc.src = 'https://www.instagram.com/embed.js';
+      document.body.appendChild(sc);
+    };
+    if ('IntersectionObserver' in window) {
+      var igo = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { loadIg(); igo.disconnect(); }
+      }, { rootMargin: '400px' });
+      igo.observe(ig);
+    } else { loadIg(); }
+  }
+
   // E-mailadres kopiëren
   document.querySelectorAll('.copy[data-copy]').forEach(function (b) {
     var label = b.textContent;
